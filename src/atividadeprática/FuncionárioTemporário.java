@@ -1,21 +1,27 @@
 package atividadeprática;
 public class FuncionárioTemporário extends Funcionário{
 
-    public FuncionárioTemporário(Integer código, Integer tipo, Double salárioBase, Integer tempo, Dependente dependentes) {
-        super(código, tipo, salárioBase, tempo, dependentes);
+    public FuncionárioTemporário(Integer código, Integer tipo, Double salárioBase, Integer tempo, Integer[] idades) {
+        super(código, tipo, salárioBase, tempo, idades);
     }
     
     @Override
     public double salário(){
-        return (tempo * 15) + salárioBase + (númeroDependentesMenores * 50);
+        double salario = (tempo * 15) + salárioBase;
+        for (int i=0; i<idades.length; i++){
+            if (idades[i] <18){
+                salario += 50;
+            }
+        }
+        return salario;
     }
     
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Funcionário com código %d, temporário (2), ", código));
-        sb.append(String.format("com salário-base de R$%.2f e ", salário()));
-        sb.append(tempo + " meses de contratação.");
+        sb.append(String.format("ID: %d %n", código));
+        sb.append(String.format("Ingressou na empresa há %d meses. %n", tempo));
+        sb.append(String.format("Remuneração mensal: R$%.2f. %n", salário()));
         return sb.toString();
         }
       

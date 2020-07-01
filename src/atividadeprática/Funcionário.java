@@ -5,15 +5,14 @@ public abstract class Funcionário {
     protected Integer tempo;
     protected Integer tipo;
     protected Double salárioBase;
-    protected Dependente dependentes;
-    protected Integer númeroDependentesMenores;
+    protected Integer[] idades;
 
-    public Funcionário(Integer código, Integer tipo, Double salárioBase, Integer tempo, Dependente dependentes) {
+    public Funcionário(Integer código, Integer tipo, Double salárioBase, Integer tempo, Integer[] idades) {
         this.código = código;
         this.tempo = tempo;
         this.tipo = tipo;
         this.salárioBase = salárioBase;   
-        this.dependentes = dependentes;
+        this.idades = idades;
     }
 
     public Double getSalárioBase() {
@@ -40,39 +39,8 @@ public abstract class Funcionário {
         this.tipo = tipo;
     }
 
-    public Dependente getDependente() {
-        return dependentes;
-    }
-
-    public void setDependente(Dependente dependente) {
-        this.dependentes = dependente;
-    }
-
-    public Integer getNúmeroDependentesMenores() {
-        return númeroDependentesMenores;
-    }
-
-    public void setNúmeroDependentesMenores(Integer númeroDependentesMenores) {
-        this.númeroDependentesMenores = númeroDependentesMenores;
-    }
-
-    public int dependenteMenorConcursado(boolean validação){
-        if (dependentes.dependenteMenorConcursado(dependentes.idade) == true){
-            númeroDependentesMenores += 1;
-        }
-        return númeroDependentesMenores;
-    }
+    public abstract double salário();
     
-    public int dependenteMenorTemporário(boolean validação){
-        if (dependentes.dependenteMenorTemporário(dependentes.idade) == true){
-            númeroDependentesMenores += 1;
-        }
-        return númeroDependentesMenores;
-    }
-    
-    public double salário(){
-        return 0;
-    }
     
     public String toString(){
         StringBuilder sb = new StringBuilder();

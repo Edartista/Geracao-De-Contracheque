@@ -11,14 +11,14 @@ public class Dependente {
         return idade;
     }
     
-    public boolean dependenteMenorConcursado(int idade){
+    public boolean MenorConcursado(int idade){
         if (idade <= 21){
             return true;
         } else
             return false;
     }
     
-    public boolean dependenteMenorTemporário(int idade){
+    public boolean MenorTemporário(int idade){
         if (idade <= 18){
             return true;
         } else
